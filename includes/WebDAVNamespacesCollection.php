@@ -78,6 +78,13 @@ class WebDAVNamespacesCollection extends Sabre\DAV\Collection {
 				continue;
 			}
 
+			/* 2600 is not a Task namespace but the flow namespace
+			 * which must be skipped since 'X' is not a valid flow topic title
+			 */
+			if ( $nsId === 2600 ) {
+				continue;
+			}
+
 			if ( $namespaceInfo->isTalk( $nsId ) && $config->get( 'WebDAVSkipTalkNS' ) ) {
 				continue;
 			}
